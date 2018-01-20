@@ -1,0 +1,24 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "DefaultEndpointsProtocol=https;AccountName=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX;AccountKey=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/WkKkyUDg==",
+    "AzureWebJobsDashboard": "DefaultEndpointsProtocol=https;AccountName=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX;AccountKey=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/WkKkyUDg=="
+  }
+}
+
+{
+	"frameworks": {
+    "net46":{
+      "dependencies": {		
+			"Microsoft.Azure.Common":"2.1.4",
+			"Microsoft.Azure.Common.Dependencies":"1.0.0",
+			"Microsoft.Azure.Management.DataFactories":"4.13.0",
+			"Microsoft.Bcl":"1.1.10",
+			"Microsoft.Bcl.Async":"1.0.168",
+			"Microsoft.Bcl.Build":"1.0.21",
+			"Microsoft.IdentityModel.Clients.ActiveDirectory":"3.17.3",
+			"Microsoft.Net.Http":"2.2.29",
+      }
+    }
+   }
+}
