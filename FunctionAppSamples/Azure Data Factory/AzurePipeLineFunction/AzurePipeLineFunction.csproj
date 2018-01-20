@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net461</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>    
+    <PackageReference Include="Microsoft.Azure.Common" Version="2.1.4" />    
+    <PackageReference Include="Microsoft.Azure.Common.Dependencies" Version="1.0.0" />    
+    <PackageReference Include="Microsoft.Azure.Management.DataFactories" Version="4.13.0" />    
+    <PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="1.6.0-preview" />    
+    <PackageReference Include="Microsoft.Bcl" Version="1.1.10" />    
+    <PackageReference Include="Microsoft.Bcl.Async" Version="1.0.168" />    
+    <PackageReference Include="Microsoft.Bcl.Build" Version="1.0.21" />    
+    <PackageReference Include="Microsoft.IdentityModel.Clients.ActiveDirectory" Version="3.17.3" />    
+    <PackageReference Include="Microsoft.Net.Http" Version="2.2.29" />    
+    <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="1.0.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="host.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="local.settings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>Never</CopyToPublishDirectory>
+    </None>
+  </ItemGroup>
+</Project>
