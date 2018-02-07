@@ -1,0 +1,142 @@
+<p>
+    By default MS deploy /PowerShell uses TLS1.0 , we need to force them to use
+    TLS1.2 by trying following :
+</p>
+<table border="1" cellspacing="0" cellpadding="0" title="" summary="">
+    <tbody>
+        <tr>
+            <td width="1143" valign="top">
+                <p>
+                    On the <strong>Local machine</strong> from where you are
+publishing the web app , Add settings for                    <strong>MSdeploy</strong>, could force it use TLS1.2 rather
+                    than default TLs1.0.
+                </p>
+                <p>
+                    <strong> </strong>
+                </p>
+                <p>
+                    <strong> </strong>
+                </p>
+                <p>
+                    <strong>MSDeploy</strong>
+                    .exe need to be running in windows 2008 R2/Windows 7 or
+                    above with .NET Framework 4.5.x or .Net Framework 4.6
+                    installed since <strong>TLS 1.2</strong> /RFC 5246 was
+                    released to industry in Aug. 2008. Any earlier version of
+windows and .NET Framework cannot support                    <strong>TLS 1.2</strong> runtime.
+                </p>
+                <p>
+                    If you are using .NET Framework 4.5.x, you will need to
+install the following hotfix to make the regkey                    <strong>TLS</strong> version feature setting available.
+                </p>
+                <p>
+                    <a href="https://support.microsoft.com/en-us/kb/3099843">
+                        https://support.microsoft.com/en-us/kb/3099843
+                    </a>
+                </p>
+                <p>
+At the machine level, Set the schannel key to enable<strong>TLS 1.2</strong> client on                    <strong>MSDeploy</strong>.exe machine
+                </p>
+                <p>
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\                    <strong>TLS 1.2</strong>\Client]
+                </p>
+                <p>
+                    "DisabledByDefault"=dword:0
+                </p>
+                <p>
+                    "Enabled"=dword:00000001
+                </p>
+                <p>
+                    Reboot
+                </p>
+                <p>
+                    If you are using <strong>MSDeploy</strong>.exe under
+“C:\Program Files (x86)\IIS\Microsoft Web Deploy V3\                    <strong>msdeploy</strong>.exe”, please set the following 2
+keys to force <strong>MSDeploy</strong>.exe using<strong>TLS 1.2</strong>, otherwise,<strong>MSDeploy</strong>.exe is coded for default                    <strong>TLS</strong> version 1.0.
+                </p>
+                <p>
+                    Add the following DWORD value:
+                </p>
+                <p>
+                    HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\.NETFramework\
+                    v4.0.30319
+                </p>
+                <p>
+                    SchUseStrongCrypto DWORD as 1
+                </p>
+                <p>
+                    This will force the <strong>TLS 1.2</strong> runtime to be
+                    loaded to .NET Framework process
+                </p>
+                <p>
+                    Also add Key of:
+                </p>
+                <p>
+                    HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\.NETFramework\v4.0.30319\System.Net.ServicePointManager.SecurityProtocol
+                </p>
+                <p>
+                    Then under that key, you can create a string value of
+“C:\Program Files (x86)\IIS\Microsoft Web Deploy V3\                    <strong>msdeploy</strong>.exe” as Tls12 to force the
+correct <strong>msdeploy</strong>.exe binary to use                    <strong>TLS 1.2</strong>
+                </p>
+                <p>
+                    If you are using <strong>MSDeploy</strong>.exe under
+“C:\Program Files\IIS\Microsoft Web Deploy V3\                    <strong>msdeploy</strong>.exe”, please set the following 2
+keys to force <strong>MSDeploy</strong>.exe using<strong>TLS 1.2</strong>, otherwise,<strong>MSDeploy</strong>.exe is coded for default                    <strong>TLS</strong> version 1.0.
+                </p>
+                <p>
+                    Add the following DWORD value:
+                </p>
+                <p>
+                    HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\
+                    v4.0.30319
+                </p>
+                <p>
+                    SchUseStrongCrypto DWORD32 as 1
+                </p>
+                <p>
+                    This will force the <strong>TLS 1.2</strong> runtime to be
+                    loaded to .NET Framework process
+                </p>
+                <p>
+                    Also add Key of:
+                </p>
+                <p>
+                    HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319\System.Net.ServicePointManager.SecurityProtocol
+                </p>
+                <p>
+                    Then under that key, you can set a string value of
+“C:\Program Files\IIS\Microsoft Web Deploy V3\                    <strong>msdeploy</strong>.exe” as Tls12
+                </p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>
+    Additionally refer to :
+    <a
+        href="https://support.microsoft.com/en-us/help/3206898/enabling-iis-manager-and-web-deploy-after-disabling-ssl3-and-tls-1-0"
+    >
+        https://support.microsoft.com/en-us/help/3206898/enabling-iis-manager-and-web-deploy-after-disabling-ssl3-and-tls-1-0
+    </a>
+</p>
+<table border="1" cellspacing="0" cellpadding="0" title="" summary="">
+    <tbody>
+        <tr>
+            <td width="1085" valign="top">
+                <p>
+                    If we are using PowerShell ,
+                </p>
+                <p>
+                    Use
+                </p>
+                <p>
+                    [Net.ServicePointManager]::SecurityProtocol =
+                    [Net.SecurityProtocolType]::TLS12 in the powershell console
+                    before starting the publishing, to force powershell.exe to
+                    use <strong>TLS 1.2</strong>
+                </p>
+            </td>
+        </tr>
+    </tbody>
+</table>
