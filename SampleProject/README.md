@@ -5,6 +5,7 @@
             var str = sl.GetSlideshow(79764970);
 4) SlideShare sl = new SlideShare("PUT_YOUR_API_KEY", "PUT_YOUR_API_SECRET");
             //Use following ovverided method , by passing various patameter from 0 to 5 to use diffrent diffrent protocol and it fails with SSL3 
+5)  var str = sl.GetSlideshow(79764970, <Int Param between 0 to 5>);
 			
 			/*
 			 if(TLStype==0) //to use default TLS
@@ -33,4 +34,4 @@
             }
 			*/
 			
-            var str = sl.GetSlideshow(79764970, <Int Param between 0 to 5>);
+           
